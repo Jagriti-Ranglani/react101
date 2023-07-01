@@ -36,3 +36,8 @@
     transform: rotate(360deg);
   }
 }
+
+.blank {
+  margin: 3rem;
+  color: pink;
+}
