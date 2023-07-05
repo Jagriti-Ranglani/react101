@@ -11,6 +11,15 @@ export default function TextForm(props) {
         setText(text.toLowerCase());
     }
 
+    const handleSentenceClick = () => {
+        let str = text.toLowerCase().split(' ');
+        for (let i = 0; i < str.length; i++) {
+            str[i] = str[i].charAt(0).toUpperCase() + str[i].slice(1);
+        }
+        // console.log(str);
+        setText(str.join(' '));
+    }
+
     const handleOnChange = (event) => {
         // console.log("OnChange");
         setText(event.target.value);
@@ -28,6 +37,7 @@ export default function TextForm(props) {
                 </div>
                 <button className="btn btn-primary mt-2" onClick={handleUpClick}>Convert to UpperCase</button>
                 <button className="btn btn-success mt-2 mx-3" onClick={handleLoClick}>Convert to LowerCase</button>
+                <button className="btn btn-info mt-2 mx-3" onClick={handleSentenceClick}>Convert to Sentence Case</button>
             </div>
             <div className="container my-4">
                 <h2>Your text summary</h2>
