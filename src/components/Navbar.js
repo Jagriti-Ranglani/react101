@@ -1,7 +1,14 @@
-import React from 'react'
+import React, {useState} from 'react'
 import PropTypes from 'prop-types'
 
 export default function Navbar(props) {
+    const [themeColor, setThemeColor] = useState("#563D73");
+    const customTheme = (event) => {
+        setThemeColor(event.target.value);
+        document.body.style.backgroundColor = themeColor;
+        document.body.style.color = "white";
+    }
+
     return (
         <nav className="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme={props.mode}>
             <div className="container-fluid">
@@ -19,6 +26,7 @@ export default function Navbar(props) {
                         </li>
                     </ul>
                 </div>
+                <input type="color" className="form-control form-control-color me-5" id="colorInput" value={themeColor} title="Choose your color" onChange={customTheme} />
                 <div className="form-check form-switch">
                     <input className="form-check-input" onClick={props.toggleMode} type="checkbox" role="switch" id="flexSwitchCheckDefault" />
                     <label className={`form-check-label text-${props.mode === "light" ? "dark" : "light"}`} htmlFor="flexSwitchCheckDefault">Switch Mode</label>
